@@ -91,4 +91,15 @@ too old, won't recognize endpoints and region
 
 # duckdb cli
 
+Need to wait for issue https://github.com/aws/aws-sdk-cpp/issues/2587 so that the endpoint could be recognize automatically.
+```
+CREATE OR REPLACE SECRET secret (
+    TYPE s3,
+    PROVIDER credential_chain,
+    CHAIN config,
+    PROFILE 'default',
+    ENDPOINT "my-minio"
+);
+```
+
 # spark
