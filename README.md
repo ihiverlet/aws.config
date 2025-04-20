@@ -11,12 +11,12 @@ The config files will look like :
 [default]
 region = us-east-1
 output = json
-s3 = https://my-minio
+endpoint_url = https://my-minio
 
 [profile parseable]
 region = us-east-1
 output = json
-s3 = https://my-minio
+endpoint_url = https://my-minio
 
 ```
 
