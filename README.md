@@ -98,6 +98,13 @@ df = pd.read_parquet('s3://inesh/demo/fd-logemt-2020.parquet', engine='pyarrow')
 
 ```
 
+Workaround : specify storage option :
+
+```
+df = pd.read_csv("s3://inesh/demo/airports_fr.csv", storage_options=dict(profile='default'))
+
+```
+
 ## R 
 
 ### paws
