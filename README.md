@@ -81,6 +81,22 @@ files = fs.ls('inesh')
 print(files)
 
 ```
+### pandas / arrow
+
+Same as duckdb, need to wait for aws-sdk-cpp
+
+```python
+import pandas as pd
+import os
+
+os.environ["AWS_DEFAULT_PROFILE"] = "default"
+os.environ["AWS_PROFILE"] = "default"  # one or the other ?
+
+os.environ["AWS_ENDPOINT_URL"] = "https://minio.lab.sspcloud.fr"
+
+df = pd.read_parquet('s3://inesh/demo/fd-logemt-2020.parquet', engine='pyarrow')
+
+```
 
 ## R 
 
