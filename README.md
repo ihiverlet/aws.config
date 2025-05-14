@@ -128,3 +128,7 @@ CREATE OR REPLACE SECRET secret (
 ```
 
 # Spark ?
+
+https://hadoop.apache.org/docs/r2.8.0/hadoop-aws/tools/hadoop-aws/index.html#Configurations_different_S3_buckets
+
+Pas de profils mais possibilité de définir des creds pour un bucket spécifique
