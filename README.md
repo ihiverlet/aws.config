@@ -3,7 +3,7 @@
 To configure only one endpoint : use env variable
 Configure several s3 endpoints : create .aws/config and .aws/credentials files. One for the configuration, and the other for sensitive information.
 To change the default path of these files : `AWS_CONFIG_FILE` or alike.
-By default, the default profile will be used. To use another one, most of the time, one can use `AWS_PROFILE` env variable.
+By default, the `default` profile will be used. To use another one, most of the time, one can use `AWS_PROFILE` env variable.
 
 The config files will look like : 
 `.aws/config`
@@ -20,16 +20,15 @@ endpoint_url = https://my-minio
 
 ```
 
-Il existe une variante - todo: creuser les services
+Il existe une variante - todo: creuser les services aws
 ```
 s3 =
     endpoint_url = https://my-minio.
 ```
-The following can be important to make minio work. However it does not seem necessary.
+The following can be important to make minio work. However, it does not seem necessary.
 ```
 config=Config(signature_version='s3v4')  # Important for MinIO
 ```
-
 
 `.aws/credentials`
 ```
@@ -63,7 +62,7 @@ response
 
 ### s3fs
 
-```
+```python
 import s3fs
 
 # Connect using default profile
@@ -75,11 +74,9 @@ fs = s3fs.S3FileSystem(
 
 fs = s3fs.S3FileSystem(profile="parseable")
 
-
 # List files in a bucket
 files = fs.ls('inesh')
 print(files)
-
 ```
 ### pandas / arrow
 
@@ -100,7 +97,7 @@ df = pd.read_parquet('s3://inesh/demo/fd-logemt-2020.parquet', engine='pyarrow')
 
 Workaround : specify storage option :
 
-```
+```python
 df = pd.read_csv("s3://inesh/demo/airports_fr.csv", storage_options=dict(profile='default'))
 
 ```
@@ -109,7 +106,7 @@ Should be able to read aws/creds & aws/config: https://arrow.apache.org/docs/pyt
 https://github.com/apache/arrow/issues/44119
 
 
-```
+```python
 import pyarrow.fs as pafs
 import pandas as pd 
 import os
@@ -124,7 +121,7 @@ df = pd.read_parquet('inesh/demo/fd-logemt-2020.parquet', filesystem=s4, engine=
 ```
 Better :
 -> forcer s3fs pour eviter de tomber sur la lib c++ du sdk
-```
+```python
 import s3fs
 import pyarrow.parquet as pq
 
