@@ -123,14 +123,13 @@ s4 = pafs.S3FileSystem(
 df = pd.read_parquet('inesh/demo/fd-logemt-2020.parquet', filesystem=s4, engine='pyarrow')
 ```
 Better :
+-> forcer s3fs pour eviter de tomber sur la lib c++ du sdk
 ```
 import s3fs
 import pyarrow.parquet as pq
 
 s3 = s3fs.S3FileSystem()
-df = pq.read_table('tm8enk/AT29/test-bpe/departement=01/bpeaggr=A101/part-149.parquet', filesystem=s3)
-genre avec pyarrow faut forcer s3fs pour eviter de tomber sur la lib c++ du sd
-sdk
+df = pq.read_table('inesh/demo/fd-logemt-2020.parquet', filesystem=s3)
 ```
 
 using boto3
