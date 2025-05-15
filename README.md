@@ -204,3 +204,20 @@ db.execute(
 https://hadoop.apache.org/docs/r2.8.0/hadoop-aws/tools/hadoop-aws/index.html#Configurations_different_S3_buckets
 
 Pas de profils mais possibilité de définir des creds pour un bucket spécifique
+
+# Avec la var d'env AWS_ENDPOINT_URL
+Attention, certains ne seront plus dispos avec les fichiers de config
+```
+import pandas as pd
+df = pd.read_parquet('s3://inesh/demo/toto.parquet')
+
+import s3fs
+import pyarrow.parquet as pq
+
+s3 = s3fs.S3FileSystem()
+df = pq.read_table('inesh/demo/toto.parquet', filesystem=s3)
+
+library(paws)
+s3 <- paws::s3()
+response <- s3$list_objects_v2(Bucket = "inesh")
+```
