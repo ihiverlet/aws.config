@@ -1,3 +1,7 @@
+https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html
+
+
+
 # aws.config
 
 To configure only one endpoint : use env variable
@@ -20,12 +24,13 @@ endpoint_url = https://my-minio
 
 ```
 
-Il existe une variante - todo: creuser les services aws
+Il existe une variante - spécificité aux services aws
 ```
 s3 =
     endpoint_url = https://my-minio.
 ```
-The following can be important to make minio work. However, it does not seem necessary.
+The following can be important to make minio work.
+>The signature version used when signing requests. Note that the default version is Signature Version 4. If you’re using a presigned URL with an expiry of greater than 7 days, you should specify Signature Version 2
 ```
 config=Config(signature_version='s3v4')  # Important for MinIO
 ```
@@ -41,6 +46,10 @@ aws_session_token = default_token
 aws_access_key_id = parseable_access_key
 aws_secret_access_key = parseable_secret_acess_key
 ```
+
+
+D'autres configurations possibles : retry mode, max attempts, proxies...
+https://boto3.amazonaws.com/v1/documentation/api/latest/guide/retries.html#guide-retries
 
 ## Python
 
