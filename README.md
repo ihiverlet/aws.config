@@ -226,3 +226,18 @@ library(paws)
 s3 <- paws::s3()
 response <- s3$list_objects_v2(Bucket = "inesh")
 ```
+
+
+test 
+
+Using boto3
+
+
+| Avant | Après |
+|-------|-------|
+|     python<br>import boto3<brclient = boto3.client(<br>'s3',<br>    aws_access_key_id=ACCESS_KEY,<br>    aws_secret_access_key=SECRET_KEY,<br>    aws_session_token=SESSION_TOKEN,<br>    endpoint_url=ENDPOINT_URL |       ``` python <br> import boto3  ``` <br><br>client = boto3.client('s3')<br>response = client.list_objects_v2(Bucket='inesh')<br>print(response)``` |
+
+
+```
+toto
+```
