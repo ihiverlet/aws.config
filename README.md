@@ -235,3 +235,16 @@ https://stackoverflow.com/questions/68005239/how-do-you-configure-the-endpoint-f
 https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/core/client/builder/SdkClientBuilder.html#endpointOverride-java.net.URI-
 
 
+
+## OIDC
+```
+[default]
+region = us-east-1
+role_arn = arn:aws:iam:::role/s3role 
+web_identity_token_file=/home/onyxia/work/id-token
+endpoint_url = https://my-storage
+```
+attention, role ignoré par minio 
+
+
+
