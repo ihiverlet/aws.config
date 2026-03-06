@@ -89,7 +89,7 @@ print(files)
 ```
 ### pandas / arrow
 
-Same as duckdb, need to wait for aws-sdk-cpp
+Same as duckdb, need to wait for aws-sdk-cpp 
 
 ```python
 import pandas as pd
@@ -104,12 +104,13 @@ df = pd.read_parquet('s3://inesh/demo/fd-logemt-2020.parquet', engine='pyarrow')
 
 ```
 
-Workaround : specify storage option :
+Workaround : specify storage option : not needed here
 
 ```python
 df = pd.read_csv("s3://inesh/demo/airports_fr.csv", storage_options=dict(profile='default'))
 
 ```
+
 More info : https://github.com/apache/arrow/issues/37888
 Should be able to read aws/creds & aws/config: https://arrow.apache.org/docs/python/generated/pyarrow.fs.S3FileSystem.html
 https://github.com/apache/arrow/issues/44119
@@ -247,4 +248,15 @@ endpoint_url = https://my-storage
 attention, role ignoré par minio 
 
 
+## Récupérer la config aws
+Pour récupérer la config aws : 
+```
+session = boto3.Session()
+config = session._session.full_config
+```
+ou si on souhaite seulement les creds : 
+```
+session = boto3.Session()
+credentials = session.get_credentials().get_frozen_credentials()
+```
 
