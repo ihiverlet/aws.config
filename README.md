@@ -1,7 +1,19 @@
 https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html
 
+# CLI autocompletion 
+https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-prompting.html
 
+```
+complete -C '/usr/local/bin/aws_completer' aws 
+# dans le bash
 
+Pour les suivants : aws +entrer -> liste de propositions
+AWS_CLI_AUTO_PROMPT=on-partial
+# avec une var d'en on ou on-partial
+
+cli_auto_prompt = on
+# dans le fichier de conf
+```
 # aws.config
 
 To configure only one endpoint : use env variable
